@@ -602,7 +602,7 @@ import Layout from "../layouts/Layout.astro";
     z-index: 10;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     .gallery-pile:hover .p-1 {
       transform: rotate(-10deg) translateX(-30px) translateY(10px);
     }
@@ -618,24 +618,27 @@ import Layout from "../layouts/Layout.astro";
       max-width: 260px;
     }
     .pile-hint {
-      bottom: -15px; /* Subirla más cerca de las fotos */
+      bottom: -10px; /* Subirla aún más */
+      font-size: 0.75rem;
     }
-    /* Forzar contador en una sola línea */
+    /* Forzar contador en una sola línea en móviles y tablets */
     .countdown {
-      gap: 0.5rem;
+      gap: 0.25rem;
       flex-wrap: nowrap;
       margin-top: 2rem;
+      padding: 0 0.5rem;
     }
     .time-box {
-      min-width: 65px;
-      padding: 1rem 0.25rem;
+      min-width: 60px;
+      padding: 0.75rem 0.1rem;
+      flex: 1;
     }
     .time-num {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
     .time-box .label {
-      font-size: 0.6rem;
-      letter-spacing: 0.05rem;
+      font-size: 0.55rem;
+      letter-spacing: 0;
     }
   }
 
