@@ -1,0 +1,1156 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="María & Javier - Nos casamos">
+  <!-- Ambient Audio Player -->
+  <button id="music-btn" class="music-toggle" aria-label="Toggle Music">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon play-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><polygon points="5 3 19 12 5 21 5 3"></polygon></svg
+    >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon pause-icon hidden"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><rect x="6" y="4" width="4" height="16"></rect><rect
+        x="14"
+        y="4"
+        width="4"
+        height="16"></rect></svg
+    >
+  </button>
+  <!-- Background audio element -->
+  <audio id="bg-music" loop autoplay>
+    <!-- Canción de prueba técnica. Para tu boda, descarga tu propio mp3 y guárdalo en la carpeta public/ 
+         Ejemplo: <source src="/mi-cancion.mp3" type="audio/mpeg" /> -->
+    <source src="/nuestra_cancion.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-bg parallax-bg"></div>
+    <div id="petals-container"></div>
+
+    <div class="hero-content scale-in">
+      <span class="label text-olive tracking-wider">Nos casamos 💍</span>
+      <h1 class="hero-title">María & Javier</h1>
+      <p class="hero-date label text-gold">15 de junio de 2026</p>
+      <a href="#historia" class="btn btn-primary mt-8">Abrir Invitación</a>
+    </div>
+  </section>
+
+  <!-- Nuestra Historia -->
+  <section id="historia" class="section">
+    <div class="container text-center">
+      <h2 class="fade-in">Nuestra historia</h2>
+
+      <div class="timeline mt-8">
+        <div class="timeline-item fade-in">
+          <h3 class="label text-olive">El comienzo • 2018</h3>
+          <p class="body-lg">
+            Todo empezó con un café que se alargó. Nunca imaginamos que ese
+            sería el primer día del resto de nuestras vidas.
+          </p>
+        </div>
+
+        <!-- Interactive Gallery Pile -->
+        <div class="gallery-pile fade-in my-12" id="gallery-pile">
+          <div class="polaroid-pile-card p-1">
+            <img src="/gallery_paris.png" alt="París" class="polaroid-img" />
+            <p class="polaroid-caption font-serif text-sm">París, 2019</p>
+          </div>
+          <div class="polaroid-pile-card p-2">
+            <img
+              src="/gallery_dog.png"
+              alt="Nuestro perro Max"
+              class="polaroid-img"
+            />
+            <p class="polaroid-caption font-serif text-sm">
+              Nuestro perro, Max
+            </p>
+          </div>
+          <div class="polaroid-pile-card p-3">
+            <img src="/couple.png" alt="El gran sí" class="polaroid-img" />
+            <p class="polaroid-caption font-serif text-sm">El gran "Sí"</p>
+          </div>
+          <p class="pile-hint label text-olive fade-in">Toca para descubrir</p>
+        </div>
+
+        <div class="timeline-item fade-in">
+          <h3 class="label text-olive">El gran "sí" • 2024</h3>
+          <p class="body-lg">
+            Frente al mar y con el corazón en la mano, decidimos que queríamos
+            caminar juntos para siempre.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detalles del evento -->
+  <section id="evento" class="section surface-low">
+    <div class="container relative z-10">
+      <h2 class="text-center fade-in text-gold">El Gran Día</h2>
+
+      <div class="cards-grid">
+        <div class="card event-card glass-panel fade-in">
+          <div class="card-icon">⛪</div>
+          <span class="label text-gold">Ceremonia</span>
+          <h3>Finca Los Olivos</h3>
+          <p class="body-lg">17:00 Hrs</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              class="btn-tertiary">Ver mapa 📍</a
+            >
+            <a
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ceremonia+María+y+Javier&dates=20260615T150000Z/20260615T160000Z"
+              target="_blank"
+              class="btn-tertiary">Añadir al Calendario 📅</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="card event-card glass-panel fade-in"
+          style="transition-delay: 200ms;"
+        >
+          <div class="card-icon">🥂</div>
+          <span class="label text-gold">Celebración</span>
+          <h3>Jardines del Lago</h3>
+          <p class="body-lg">19:00 Hrs</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              class="btn-tertiary">Ver mapa 📍</a
+            >
+            <a
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Celebración+María+y+Javier&dates=20260615T170000Z/20260615T230000Z"
+              target="_blank"
+              class="btn-tertiary">Añadir al Calendario 📅</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section class="section text-center countdown-section">
+    <div class="container fade-in">
+      <h2 class="text-olive">Ahí nos vemos en...</h2>
+      <div class="countdown" id="countdown">
+        <div class="time-box">
+          <span class="time-num text-gold" id="days">00</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num text-gold" id="hours">00</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num text-gold" id="minutes">00</span>
+          <span class="label">Minutos</span>
+        </div>
+        <div class="time-box">
+          <span class="time-num text-gold" id="seconds">00</span>
+          <span class="label">Segundos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="section surface-low">
+    <div class="container">
+      <div class="card glass-panel rsvp-container fade-in">
+        <h2 class="text-center text-gold">Confirma tu asistencia</h2>
+        <p class="text-center body-lg mb-8">
+          Sabemos que será un gran día si estás a nuestro lado.
+        </p>
+
+        <form class="rsvp-form" id="rsvp-form">
+          <div class="form-group slide-up">
+            <input type="hidden" id="magic-uid" value="" />
+            <p
+              id="magic-guest-greeting"
+              class="text-gold font-serif text-xl mb-4 hidden"
+            >
+              ¡Hola!
+            </p>
+            <label
+              for="name"
+              id="name-label"
+              class="label mb-2 block"
+              style="display: none;">Tu nombre completo</label
+            >
+            <input
+              type="text"
+              id="name"
+              required
+              placeholder="Tu Nombre Completo"
+            />
+          </div>
+
+          <div class="form-group row slide-up">
+            <label class="radio-label box-radio">
+              <input type="radio" name="attending" value="yes" required />
+              <div class="radio-content">
+                <span class="emoji">🎉</span>
+                <span>¡Allí estaré!</span>
+              </div>
+            </label>
+            <label class="radio-label box-radio">
+              <input type="radio" name="attending" value="no" />
+              <div class="radio-content">
+                <span class="emoji">😔</span>
+                <span>Me lo pierdo</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="form-group slide-up">
+            <input
+              type="number"
+              id="guests"
+              min="0"
+              placeholder="Acompañantes"
+            />
+          </div>
+          <div class="form-group slide-up">
+            <input
+              type="text"
+              id="diet"
+              placeholder="Restricciones alimentarias (ej. Vegano, Sin Gluten)"
+            />
+          </div>
+          <div class="form-group slide-up">
+            <textarea
+              id="message"
+              rows="3"
+              placeholder="Déjanos un mensaje (O la canción que no puede faltar)"
+            ></textarea>
+          </div>
+          <div class="text-center mt-8">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="submit-btn"
+              style="width: 100%;">Confirmar con el corazón</button
+            >
+          </div>
+
+          <!-- Animated success message -->
+          <div id="form-success" class="success-msg hidden text-center">
+            <div class="success-icon">💌</div>
+            <h3>¡Mensaje enviado!</h3>
+            <p>Gracias por confirmar. Qué emoción compartirlo contigo.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="section text-center">
+    <div class="container fade-in">
+      <h2>Ten en cuenta</h2>
+      <div class="info-grid mt-8">
+        <div class="card info-card fade-in">
+          <span class="label text-olive mb-4 block">Dress Code</span>
+          <p class="body-lg">Formal Emocional</p>
+          <p class="mt-4 opacity-80 text-sm">
+            Traje oscuro y vestidos largos. Evitar el blanco (¡es exclusivo de
+            la novia!).
+          </p>
+        </div>
+        <div class="card info-card fade-in" style="transition-delay: 200ms;">
+          <span class="label text-olive mb-4 block">Lista de bodas</span>
+          <p class="gifts-text italic">
+            Para nosotros, tu presencia es todo. Pero si deseas tener un detalle
+            para nuestra luna de miel:
+          </p>
+          <div class="iban-box mt-4">
+            <p class="iban text-gold font-serif text-xl">
+              ES00 1234 5678 9012 3456
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer text-center fade-in" style="padding-bottom: 2rem;">
+    <h3 class="text-gold" style="margin-bottom: 4rem;">
+      No podemos esperar a compartir este día contigo ❤️
+    </h3>
+
+    <div
+      style="border-top: 1px solid rgba(82, 98, 28, 0.1); padding-top: 2rem; opacity: 0.8;"
+    >
+      <a
+        href="https://tanesolutions.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="text-decoration: none; font-family: var(--font-sans); font-size: 0.75rem; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 1px;"
+      >
+        Powered by <strong style="color: var(--olive); font-weight: 700;"
+          >Tane Solutions</strong
+        >
+      </a>
+    </div>
+  </section>
+
+  <!-- Secret Login Modal -->
+  <div id="secret-login" class="modal-overlay hidden">
+    <div class="card glass-panel text-center scale-in">
+      <h3 class="text-olive mb-4">Acceso de Novios</h3>
+      <p class="mb-4">
+        Ingresa las credenciales para acceder al panel de confirmaciones.
+      </p>
+      <input
+        type="text"
+        id="secret-user"
+        placeholder="Usuario"
+        class="modern-input mb-4"
+      />
+      <input
+        type="password"
+        id="secret-pass"
+        placeholder="Contraseña"
+        class="modern-input mb-8"
+      />
+      <div class="flex gap-4">
+        <button id="secret-close" class="btn-tertiary">Cancelar</button>
+        <button
+          id="secret-submit"
+          class="btn-primary"
+          style="padding: 0.5rem 1.5rem; border-radius: 20px;">Entrar</button
+        >
+      </div>
+      <p id="secret-error" class="text-red-500 mt-4 hidden">
+        Credenciales incorrectas.
+      </p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Extra Utilities */
+  .tracking-wider {
+    letter-spacing: 0.2em;
+  }
+  .mt-4 {
+    margin-top: 1rem;
+  }
+  .mt-8 {
+    margin-top: 2rem;
+  }
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+  .my-12 {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  .italic {
+    font-style: italic;
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gap-4 {
+    gap: 1rem;
+  }
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  .text-xl {
+    font-size: 1.25rem;
+  }
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .surface-low {
+    background-color: var(--surface-container-low);
+  }
+
+  /* Ambient Music Player */
+  .music-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    transition:
+      transform 0.3s var(--ease-spring),
+      box-shadow 0.3s;
+  }
+  .music-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(82, 98, 28, 0.2);
+  }
+  .music-toggle.playing {
+    background: var(--primary);
+    color: var(--on-primary);
+    animation: rotateSlow 10s linear infinite;
+  }
+  .music-toggle.playing .icon {
+    /* counter-rotate the icon so it stays upright if we wanted, but playing vinyl rotates all */
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  @keyframes rotateSlow {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Hero Parallax & Enhancements */
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-image: url("/hero_couple.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    z-index: 1;
+    will-change: transform;
+  }
+  .parallax-bg {
+    /* Basic parallax using fixed attachment, fallback to JS for smooth effect */
+    background-attachment: fixed;
+  }
+
+  /* Petals */
+  #petals-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      align-items: flex-start;
+      padding-top: 5vh; /* Subido más arriba para no cortar la cabeza */
+    }
+    .hero-bg {
+      /* Volvemos al centro por defecto, el ajuste lo hace la caja bajando/subiendo */
+      background-position: center; 
+    }
+    .hero-content {
+      padding: 2rem 1.25rem; /* Ligeramente más compacto para ganar espacio */
+      width: 92%;
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    padding: 3rem;
+    background: rgba(251, 249, 245, 0.5); /* Vellum effect overlay */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.05);
+  }
+
+  .hero-title {
+    margin: 1.5rem 0;
+    color: var(--on-surface);
+    text-shadow: 0 4px 12px rgba(255, 255, 255, 0.6); /* Ethereal glow */
+  }
+
+  /* Interactive Gallery Pile */
+  .gallery-pile {
+    position: relative;
+    height: 350px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    perspective: 1000px;
+  }
+
+  .pile-hint {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    animation: pulseHint 2s infinite alternate;
+  }
+  @keyframes pulseHint {
+    0% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .polaroid-pile-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 1rem 1rem 3.5rem 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: all 0.6s var(--ease-spring);
+    transform-origin: bottom center;
+  }
+
+  .polaroid-pile-card .polaroid-image,
+  .polaroid-pile-card .polaroid-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-color: var(--surface-container-high);
+  }
+
+  .polaroid-caption {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--on-surface-variant);
+  }
+
+  /* Initial pile positions */
+  .polaroid-pile-card.p-1 {
+    transform: rotate(-8deg) translateX(-10px) translateY(10px);
+    z-index: 1;
+  }
+  .polaroid-pile-card.p-2 {
+    transform: rotate(5deg) translateX(15px) translateY(-5px);
+    z-index: 2;
+  }
+  .polaroid-pile-card.p-3 {
+    transform: rotate(-2deg) scale(1.05);
+    z-index: 3;
+  }
+
+  /* Spread on hover */
+  .gallery-pile:hover .p-1 {
+    transform: rotate(-15deg) translateX(-60px) translateY(20px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  }
+  .gallery-pile:hover .p-2 {
+    transform: rotate(15deg) translateX(60px) translateY(10px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  }
+  .gallery-pile:hover .p-3 {
+    transform: rotate(0deg) translateY(-10px) scale(1.1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  @media (max-width: 480px) {
+    .gallery-pile:hover .p-1 {
+      transform: rotate(-10deg) translateX(-30px) translateY(10px);
+    }
+    .gallery-pile:hover .p-2 {
+      transform: rotate(10deg) translateX(30px) translateY(5px);
+    }
+    .polaroid-pile-card .polaroid-image,
+    .polaroid-pile-card .polaroid-img {
+      height: 200px;
+    }
+    .gallery-pile {
+      height: 260px;
+      max-width: 260px;
+    }
+  }
+
+  /* Event cards */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .event-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s var(--ease-spring);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .event-card:hover {
+    transform: translateY(-10px);
+  }
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: grayscale(100%) sepia(100%) hue-rotate(30deg) saturate(300%)
+      brightness(0.8);
+  }
+
+  /* Countdown updated */
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .time-box {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    min-width: 120px;
+    box-shadow: 0 12px 32px rgba(27, 28, 26, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s;
+  }
+  .time-box:hover {
+    transform: scale(1.05);
+  }
+
+  .time-num {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(115, 92, 0, 0.2);
+  }
+
+  /* RSVP Form wow styling */
+  .rsvp-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative corner botanicals */
+  .rsvp-container::before {
+    content: "🌿";
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    font-size: 8rem;
+    opacity: 0.05;
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+
+  .rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--outline-variant);
+    padding: 1rem 0.5rem;
+    transition: all 0.4s;
+    font-size: 1.1rem;
+    font-family: var(--font-sans);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-bottom-color: var(--secondary);
+    background: linear-gradient(
+      to top,
+      rgba(254, 214, 91, 0.1) 0%,
+      transparent 100%
+    );
+  }
+
+  /* Fancy Radio Boxes */
+  .box-radio input[type="radio"] {
+    display: none;
+  }
+  .radio-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-spring);
+    background: rgba(255, 255, 255, 0.5);
+    min-width: 160px;
+  }
+  .radio-content .emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .box-radio input[type="radio"]:checked + .radio-content {
+    background: var(--surface-container-lowest);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 24px rgba(115, 92, 0, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .success-msg {
+    margin-top: 2rem;
+    padding: 3rem 2rem;
+    background: var(--surface-container-lowest);
+    border: 1px solid var(--secondary-container);
+    border-radius: var(--radius-lg);
+  }
+  .success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite ease-in-out;
+  }
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* Info elements */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+  }
+
+  .info-card {
+    border-top: 4px solid var(--outline-variant);
+    transition: border-color 0.4s;
+  }
+  .info-card:hover {
+    border-top-color: var(--secondary);
+  }
+
+  .iban-box {
+    background: rgba(254, 214, 91, 0.1);
+    padding: 1.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--secondary-container);
+  }
+
+  .footer {
+    padding: 8rem 1.5rem;
+    background-color: var(--surface-container-lowest);
+    position: relative;
+  }
+
+  /* Secret Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modern-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.7);
+  }
+  .text-red-500 {
+    color: #e11d48;
+  }
+
+  /* Make fields slide up in form */
+  .slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // Trigger introductory animation
+  setTimeout(() => {
+    document.querySelector(".hero-content")?.classList.add("visible");
+  }, 100);
+
+  // Advanced Parallax effect for Hero Background
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const heroBg = document.querySelector(".hero-bg") as HTMLElement;
+          if (heroBg) {
+            heroBg.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+
+  // Falling Petals Generator
+  function createPetals() {
+    const container = document.getElementById("petals-container");
+    if (!container) return;
+    const numPetals = 15;
+    for (let i = 0; i < numPetals; i++) {
+      const petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.width = `${Math.random() * 10 + 5}px`;
+      petal.style.height = `${Math.random() * 8 + 4}px`;
+      petal.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      petal.style.animationDelay = `${Math.random() * 5}s`;
+      container.appendChild(petal);
+    }
+  }
+  createPetals();
+
+  // Music Player Toggle & Autoplay logic
+  const musicBtn = document.getElementById("music-btn");
+  const bgMusic = document.getElementById("bg-music") as HTMLAudioElement;
+  const playIcon = document.querySelector(".play-icon");
+  const pauseIcon = document.querySelector(".pause-icon");
+
+  let isPlaying = false;
+
+  // Browser Authoplay Bypass (Browsers block audio without user interaction)
+  const attemptAutoplay = () => {
+    if (!isPlaying && bgMusic) {
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            isPlaying = true;
+            musicBtn?.classList.add("playing");
+            playIcon?.classList.add("hidden");
+            pauseIcon?.classList.remove("hidden");
+
+            document.removeEventListener("click", attemptAutoplay);
+            document.removeEventListener("scroll", attemptAutoplay);
+            document.removeEventListener("touchstart", attemptAutoplay);
+          })
+          .catch((e) => {
+            // Playback hindered by browser policies, will try again on next interaction
+          });
+      }
+    }
+  };
+
+  // Intentar reproducir instantáneamente al cargar
+  setTimeout(attemptAutoplay, 100);
+
+  document.addEventListener("click", attemptAutoplay);
+  document.addEventListener("scroll", attemptAutoplay, { passive: true });
+  document.addEventListener("touchstart", attemptAutoplay, { passive: true });
+
+  musicBtn?.addEventListener("click", (e) => {
+    e.stopPropagation(); // Avoid triggering attemptAutoplay loop
+    if (isPlaying) {
+      bgMusic?.pause();
+      musicBtn.classList.remove("playing");
+      playIcon?.classList.remove("hidden");
+      pauseIcon?.classList.add("hidden");
+    } else {
+      bgMusic
+        ?.play()
+        .catch((e) => console.log("Audio play blocked by browser", e));
+      musicBtn.classList.add("playing");
+      playIcon?.classList.add("hidden");
+      pauseIcon?.classList.remove("hidden");
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // Gallery interactive pile (Tap repeatedly to cycle photos)
+  const pile = document.getElementById("gallery-pile");
+  const pileHint = document.querySelector(".pile-hint");
+  if (pile) {
+    pile.addEventListener("click", () => {
+      if (pileHint) (pileHint as HTMLElement).style.opacity = "0";
+      const cards = pile.querySelectorAll(".polaroid-pile-card");
+      cards.forEach((card) => {
+        if (card.classList.contains("p-3")) {
+          card.classList.remove("p-3");
+          card.classList.add("p-1");
+        } else if (card.classList.contains("p-2")) {
+          card.classList.remove("p-2");
+          card.classList.add("p-3");
+        } else if (card.classList.contains("p-1")) {
+          card.classList.remove("p-1");
+          card.classList.add("p-2");
+        }
+      });
+    });
+  }
+
+  // Countdown Logic
+  const countDownDate = new Date("Jun 15, 2026 17:00:00").getTime();
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      const countdownEl = document.getElementById("countdown");
+      if (countdownEl)
+        countdownEl.innerHTML =
+          "<h2 class='text-gold'>¡Es el día! Llegó el momento.</h2>";
+      return;
+    }
+
+    const d = document.getElementById("days");
+    if (d)
+      d.innerText = Math.floor(distance / (1000 * 60 * 60 * 24))
+        .toString()
+        .padStart(2, "0");
+
+    const h = document.getElementById("hours");
+    if (h)
+      h.innerText = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      )
+        .toString()
+        .padStart(2, "0");
+
+    const m = document.getElementById("minutes");
+    if (m)
+      m.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        .toString()
+        .padStart(2, "0");
+
+    const s = document.getElementById("seconds");
+    if (s)
+      s.innerText = Math.floor((distance % (1000 * 60)) / 1000)
+        .toString()
+        .padStart(2, "0");
+  }, 1000);
+
+  // RSVP Form Logic & Animations
+  const form = document.getElementById("rsvp-form");
+  const success = document.getElementById("form-success");
+  const submitBtn = document.getElementById("submit-btn");
+  const magicUid = document.getElementById("magic-uid") as HTMLInputElement;
+  const magicGreeting = document.getElementById("magic-guest-greeting");
+  const nameInput = document.getElementById("name") as HTMLInputElement;
+  const nameLabel = document.getElementById("name-label");
+
+  // --- Read Magic Link URL Parameter ---
+  const params = new URLSearchParams(window.location.search);
+  const uid = params.get("uid");
+  if (uid) {
+    const items = JSON.parse(
+      localStorage.getItem("wedding_invitations_list") || "[]",
+    );
+    const guest = items.find((i: any) => i.uid === uid);
+    if (guest && magicUid) {
+      magicUid.value = uid;
+      if (magicGreeting && nameInput && nameLabel) {
+        magicGreeting.classList.remove("hidden");
+        magicGreeting.innerText = `¡Hola, ${guest.name}!`;
+        nameInput.value = guest.name;
+        nameInput.style.display = "none"; // Lock the name field
+        nameLabel.style.display = "none";
+      }
+    }
+  }
+
+  // Reveal form fields step-by-step
+  const formObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, i * 150);
+          formObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px", threshold: 0.1 },
+  );
+
+  document
+    .querySelectorAll(".slide-up")
+    .forEach((el) => formObserver.observe(el));
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (submitBtn) {
+      (submitBtn as HTMLButtonElement).innerHTML =
+        'Enviando cariño... <span class="emoji">💞</span>';
+      (submitBtn as HTMLButtonElement).disabled = true;
+    }
+
+    // Save to LocalStorage mock DB
+    const name = nameInput.value;
+    const attending = (
+      document.querySelector(
+        'input[name="attending"]:checked',
+      ) as HTMLInputElement
+    ).value;
+    const guests =
+      (document.getElementById("guests") as HTMLInputElement).value || "0";
+    const diet =
+      (document.getElementById("diet") as HTMLInputElement).value || "-";
+    const message = (document.getElementById("message") as HTMLTextAreaElement)
+      .value;
+
+    const currentRsvps = JSON.parse(
+      localStorage.getItem("wedding_rsvp_confirmations") || "[]",
+    );
+    currentRsvps.push({
+      uid: magicUid?.value || null,
+      name,
+      attending,
+      guests,
+      diet,
+      message,
+    });
+    localStorage.setItem(
+      "wedding_rsvp_confirmations",
+      JSON.stringify(currentRsvps),
+    );
+
+    // Form Wow processing effect
+    setTimeout(() => {
+      form.style.display = "none";
+      success?.classList.remove("hidden");
+      success?.classList.add("scale-in", "visible");
+    }, 1500);
+  });
+  // Secret Login Logic
+  let titleClicks = 0;
+  let clickTimeout: ReturnType<typeof setTimeout>;
+
+  const heroTitle = document.querySelector(".hero-title");
+  const secretModal = document.getElementById("secret-login");
+  const secretClose = document.getElementById("secret-close");
+  const secretSubmit = document.getElementById("secret-submit");
+  const secretError = document.getElementById("secret-error");
+
+  heroTitle?.addEventListener("click", () => {
+    titleClicks++;
+    clearTimeout(clickTimeout);
+    clickTimeout = setTimeout(() => {
+      titleClicks = 0;
+    }, 2000);
+
+    if (titleClicks >= 5) {
+      if (secretModal) secretModal.classList.remove("hidden");
+      setTimeout(() => secretModal?.classList.add("active"), 10);
+      titleClicks = 0;
+    }
+  });
+
+  secretClose?.addEventListener("click", () => {
+    secretModal?.classList.remove("active");
+    setTimeout(() => {
+      secretModal?.classList.add("hidden");
+      if (secretError) secretError.classList.add("hidden");
+    }, 300);
+  });
+
+  secretSubmit?.addEventListener("click", () => {
+    const user = (document.getElementById("secret-user") as HTMLInputElement)
+      ?.value;
+    const pass = (document.getElementById("secret-pass") as HTMLInputElement)
+      ?.value;
+
+    if (user.toLowerCase() === "novios" && pass === "2026") {
+      window.location.href = "/dashboard";
+    } else {
+      secretError?.classList.remove("hidden");
+    }
+  });
+</script>

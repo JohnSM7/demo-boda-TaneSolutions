@@ -1,0 +1,390 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dashboard Novios - Boda Demo">
+  <div class="dashboard-wrap surface-low">
+    <div class="container py-8">
+      <header class="dashboard-header fade-in">
+        <h1 class="text-olive">Panel de Invitados</h1>
+        <p class="body-lg">Vista exclusiva para novios (Modo Demo)</p>
+      </header>
+
+      <div class="stats-grid mt-8 fade-in">
+        <div class="card stat-card text-center">
+          <span class="label">Total Invitados Conf.</span>
+          <div class="stat-number text-gold" id="stat-confirmed">0</div>
+        </div>
+        <div class="card stat-card text-center">
+          <span class="label">Pendientes</span>
+          <div class="stat-number" id="stat-pending">0</div>
+        </div>
+        <div class="card stat-card text-center">
+          <span class="label">Menús Especiales</span>
+          <div class="stat-number text-olive" id="stat-special">0</div>
+        </div>
+      </div>
+
+      <div class="tabs mt-8 fade-in">
+        <button class="tab-btn active" onclick="switchTab('tab-confirmaciones')">Confirmaciones (RSVP)</button>
+        <button class="tab-btn" onclick="switchTab('tab-gestion')">Gestión de Envíos</button>
+      </div>
+
+      <!-- TAB: RSVP Confirmations -->
+      <div id="tab-confirmaciones" class="tab-content active mt-4">
+        <div class="card fade-in" style="overflow-x: auto;">
+          <div class="flex" style="justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="margin: 0;">Respuestas de Invitados</h3>
+            <button id="export-btn" class="btn-primary" style="padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-size: 0.9rem;">
+              Exportar Excel 📊
+            </button>
+          </div>
+          <table class="guest-table" id="guest-table">
+            <thead>
+              <tr>
+                <th class="label text-left">Nombre</th>
+                <th class="label text-center">Estado</th>
+                <th class="label text-center">Acompañantes</th>
+                <th class="label text-left">Menú / Notas</th>
+              </tr>
+            </thead>
+            <tbody id="guest-table-body">
+              <tr id="empty-state">
+                <td colspan="4" class="text-center py-4" style="opacity: 0.6; padding: 2rem;">
+                  Aún no hay confirmaciones. Los datos llegarán desde Google Sheets.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB: Gestión de Invitados -->
+      <div id="tab-gestion" class="tab-content mt-4" style="display: none;">
+        <div class="card fade-in">
+          <h3 class="mb-4">Registro de Invitaciones</h3>
+          <p class="body-lg mb-4" style="font-size: 0.95rem;">Lleva el control de a quién has invitado y si ya le mandaste la web.</p>
+          
+          <form id="add-invite-form" class="flex gap-4 mb-8" style="align-items: flex-end; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 200px;">
+              <span class="label text-olive mb-4 block" style="margin-bottom: 0.5rem;">Nombre del Invitado/Familia</span>
+              <input type="text" id="new-guest-name" required class="modern-input" placeholder="Ej. Familia López" />
+            </div>
+            <div>
+              <button type="submit" class="btn-primary" style="padding: 0.75rem 1.5rem; border-radius: var(--radius-sm); height: 100%;">
+                Añadir al listado
+              </button>
+            </div>
+          </form>
+
+          <div style="overflow-x: auto;">
+            <table class="guest-table" id="management-table">
+              <thead>
+                <tr>
+                  <th class="label text-left">Invitado</th>
+                  <th class="label text-center">Enviada</th>
+                  <th class="label text-center">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="management-table-body">
+                <!-- Se poblará vía LocalStorage como demo -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-8 fade-in">
+          <a href="/" class="btn-tertiary">Volver a la invitación</a>
+      </div>
+
+      <div class="text-center mt-12 fade-in" style="border-top: 1px solid rgba(82, 98, 28, 0.1); padding-top: 2rem; opacity: 0.8;">
+        <a href="https://tanesolutions.com" target="_blank" rel="noopener noreferrer" style="text-decoration: none; font-family: var(--font-sans); font-size: 0.75rem; color: var(--on-surface-variant); text-transform: uppercase; letter-spacing: 1px;">
+          Powered by <strong style="color: var(--olive); font-weight: 700;">Tane Solutions</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .dashboard-wrap {
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+  .py-8 { padding-top: 4rem; padding-bottom: 4rem; }
+  .mt-8 { margin-top: 2rem; }
+  .mb-4 { margin-bottom: 1rem; }
+  .text-left { text-align: left; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-family: var(--font-serif);
+    line-height: 1;
+    margin-top: 0.5rem;
+  }
+
+  .guest-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .guest-table th, .guest-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--surface-container);
+  }
+
+  .guest-table th {
+    color: var(--on-surface-variant);
+  }
+
+  .guest-table tbody tr:hover {
+    background-color: var(--surface-container-low);
+  }
+
+  /* Management tabs */
+  .tabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 2px solid var(--surface-container);
+    margin-bottom: 2rem;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--on-surface-variant);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .tab-btn:hover { color: var(--on-surface); }
+  .tab-btn.active {
+    color: var(--secondary);
+  }
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; width: 100%; height: 2px;
+    background-color: var(--secondary);
+  }
+  
+  .modern-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-sm);
+    background: transparent;
+  }
+  .btn-small {
+    padding: 0.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+  }
+  .btn-small:hover { background: var(--surface-container-high); }
+
+  .status-yes { color: var(--secondary); font-weight: 500; }
+  .status-no { color: var(--error); }
+</style>
+
+<script>
+  // Tab Switching
+  (window as any).switchTab = function(tabId: string) {
+    document.querySelectorAll('.tab-content').forEach(el => (el as HTMLElement).style.display = 'none');
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    
+    document.getElementById(tabId)!.style.display = 'block';
+    
+    // Find the btn that triggered this based on its onclick attribute
+    const btns = document.querySelectorAll('.tab-btn');
+    btns.forEach((b: Element) => {
+      if(b.getAttribute('onclick')?.includes(tabId)) {
+        b.classList.add('active');
+      }
+    });
+  }
+
+  // --- Mock Persistence for Management List via LocalStorage ---
+  const MOCK_STORAGE_KEY = 'wedding_invitations_list';
+  const mgmtTbody = document.getElementById('management-table-body');
+  const addForm = document.getElementById('add-invite-form');
+
+  function renderMgmtList() {
+    if(!mgmtTbody) return;
+    mgmtTbody.innerHTML = '';
+    const items = JSON.parse(localStorage.getItem(MOCK_STORAGE_KEY) || '[]');
+    
+    if (items.length === 0) {
+      mgmtTbody.innerHTML = `<tr><td colspan="3" class="text-center py-4" style="opacity:0.6;">Añade invitados arriba para llevar el control.</td></tr>`;
+      return;
+    }
+
+    items.forEach((item: any, index: number) => {
+      const tr = document.createElement('tr');
+      
+      // Upgrade existing items with uid if missing
+      if(!item.uid) { item.uid = Math.random().toString(36).substring(2, 9); }
+      
+      tr.innerHTML = `
+        <td>${item.name}</td>
+        <td class="text-center">
+          <input type="checkbox" ${item.sent ? 'checked' : ''} onchange="toggleSent(${index}, this.checked)" style="transform: scale(1.3); cursor: pointer;" />
+        </td>
+        <td class="text-center flex align-center gap-4 justify-center" style="gap: 1rem;">
+          <button class="btn-small text-gold" onclick="copyLink('${item.uid}')" title="Copiar Enlace para WhatsApp">🔗 Copiar Link</button>
+          <button class="btn-small text-error" onclick="deleteInvite(${index})" title="Eliminar">🗑️</button>
+        </td>
+      `;
+      mgmtTbody.appendChild(tr);
+    });
+  }
+
+  addForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = document.getElementById('new-guest-name') as HTMLInputElement;
+    if(!input || !input.value.trim()) return;
+    
+    const items = JSON.parse(localStorage.getItem(MOCK_STORAGE_KEY) || '[]');
+    items.push({ name: input.value.trim(), sent: false, uid: Math.random().toString(36).substring(2, 9) });
+    localStorage.setItem(MOCK_STORAGE_KEY, JSON.stringify(items));
+    input.value = '';
+    renderMgmtList();
+    renderRSVPList();
+  });
+
+  (window as any).toggleSent = function(index: number, checked: boolean) {
+    const items = JSON.parse(localStorage.getItem(MOCK_STORAGE_KEY) || '[]');
+    if(items[index]) items[index].sent = checked;
+    localStorage.setItem(MOCK_STORAGE_KEY, JSON.stringify(items));
+    renderRSVPList();
+  };
+
+  (window as any).deleteInvite = function(index: number) {
+    const items = JSON.parse(localStorage.getItem(MOCK_STORAGE_KEY) || '[]');
+    items.splice(index, 1);
+    localStorage.setItem(MOCK_STORAGE_KEY, JSON.stringify(items));
+    renderMgmtList();
+    renderRSVPList();
+  };
+
+  (window as any).copyLink = function(uid: string) {
+    const link = window.location.origin + '/?uid=' + uid + '#rsvp';
+    navigator.clipboard.writeText(link).then(() => {
+      alert('¡Enlace de invitación único copiado! Ya puedes pegarlo en WhatsApp.');
+    });
+  };
+
+  // Initialize view
+  document.addEventListener('DOMContentLoaded', () => {
+    renderMgmtList();
+    renderRSVPList();
+  });
+
+  function renderRSVPList() {
+    const rsvpTbody = document.getElementById('guest-table-body');
+    const rsvps = JSON.parse(localStorage.getItem('wedding_rsvp_confirmations') || '[]');
+    const items = JSON.parse(localStorage.getItem(MOCK_STORAGE_KEY) || '[]');
+    
+    // Update Stats
+    let totalConfirmed = 0;
+    let totalNotes = 0;
+    
+    rsvps.forEach((r: any) => {
+      if (r.attending === 'yes') {
+        totalConfirmed += 1 + parseInt(r.guests || 0);
+      }
+      if (r.diet !== '-' && r.diet !== '') totalNotes++;
+    });
+
+    const pending = Math.max(0, items.length - rsvps.length);
+
+    const elConf = document.getElementById('stat-confirmed');
+    const elPend = document.getElementById('stat-pending');
+    const elSpec = document.getElementById('stat-special');
+    
+    if(elConf) elConf.innerText = totalConfirmed.toString();
+    if(elPend) elPend.innerText = pending.toString();
+    if(elSpec) elSpec.innerText = totalNotes.toString();
+
+    // Render Table
+    if(!rsvpTbody) return;
+    rsvpTbody.innerHTML = '';
+    rsvps.forEach((r: any) => {
+      const isYes = r.attending === 'yes';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${r.name}</td>
+        <td class="text-center ${isYes ? 'status-yes' : 'status-no'}">${isYes ? 'Confirmado' : 'No asiste'}</td>
+        <td class="text-center">${r.guests}</td>
+        <td>${r.diet}${r.message ? ' | ' + r.message : ''}</td>
+      `;
+      rsvpTbody.appendChild(tr);
+    });
+
+    // Add Pending items from Management List
+    items.forEach((item: any) => {
+      if (item.sent) {
+        // Precise exact matching via unique ID (uid) to prevent any name errors
+        const hasRSVP = rsvps.some((r: any) => r.uid === item.uid || r.name.toLowerCase() === item.name.toLowerCase());
+        if (!hasRSVP) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${item.name}</td>
+            <td class="text-center" style="color: var(--on-surface-variant); font-style: italic;">Pendiente</td>
+            <td class="text-center">-</td>
+            <td style="opacity: 0.5;">Esperando respuesta...</td>
+          `;
+          rsvpTbody.appendChild(tr);
+        }
+      }
+    });
+
+    if (rsvpTbody.children.length === 0) {
+      rsvpTbody.innerHTML = `<tr><td colspan="4" class="text-center py-4" style="opacity:0.6;">Aún no hay datos que mostrar. Añade y marca envíos en la pestaña de Gestión.</td></tr>`;
+    }
+  }
+
+  // --- Export table to CSV (RSVP Tab only) ---
+  const exportBtn = document.getElementById('export-btn');
+  exportBtn?.addEventListener('click', () => {
+    let csv = [];
+    const rows = document.querySelectorAll('#guest-table tr');
+    
+    for (let i = 0; i < rows.length; i++) {
+        let row = [], cols = rows[i].querySelectorAll('td, th');   
+        for (let j = 0; j < cols.length; j++) {
+            let text = cols[j].textContent?.trim().replace(/"/g, '""');
+            row.push('"' + text + '"');
+        }
+        csv.push(row.join(';'));
+    }
+
+    const csvContent = '\uFEFF' + csv.join('\n');
+    const csvFile = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    
+    const downloadLink = document.createElement('a');
+    downloadLink.download = 'lista_invitados_boda.csv';
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    downloadLink.style.display = 'none';
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  });
+</script>

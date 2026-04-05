@@ -1,0 +1,68 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content="¡Nos Casamos! María & Javier" />
+		<meta name="description" content="Tenemos la fecha, el lugar y las ganas. ¡Solo faltas tú! Accede a nuestra invitación interactiva, descubre los detalles y confirma tu asistencia." />
+		<meta name="theme-color" content="#fbf9f5" /> <!-- Color de la barra del navegador (tu color crema) -->
+
+		<!-- Open Graph / Facebook / WhatsApp (Genera la tarjeta visual al enviar el link) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://tanesolutions.com/boda-demo/" /> <!-- CAMBIAR POR EL DOMINIO FINAL -->
+		<meta property="og:title" content="💍 ¡Nos Casamos! María & Javier" />
+		<meta property="og:description" content="Tenemos la fecha, el lugar y las ganas. ¡Solo faltas tú! Confirma tu asistencia acompañándonos en este día tan especial." />
+		
+		<!-- IMPORTANTE: WhatsApp requiere una URL ABSOLUTA para la foto (no vale "/foto.jpg"). 
+		     Cambia esta URL por la tuya cuando subas la web a producción -->
+		<meta property="og:image" content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&h=630&auto=format&fit=crop" /> 
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:site_name" content="Invitación de Boda María & Javier" />
+
+		<!-- Twitter / X -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://tanesolutions.com/boda-demo/" /> <!-- CAMBIAR -->
+		<meta property="twitter:title" content="💍 ¡Nos Casamos! María & Javier" />
+		<meta property="twitter:description" content="Tenemos la fecha, el lugar y las ganas. ¡Solo faltas tú! Confirma tu asistencia." />
+		<meta property="twitter:image" content="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&h=630&auto=format&fit=crop" />
+	</head>
+	<body>
+		<slot />
+		
+		<script>
+			// Intersection Observer for fade-in animations
+			const observerOptions = {
+				root: null,
+				rootMargin: '0px',
+				threshold: 0.1
+			};
+
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, observerOptions);
+
+			document.querySelectorAll('.fade-in, .scale-in').forEach(el => {
+				observer.observe(el);
+			});
+		</script>
+	</body>
+</html>
