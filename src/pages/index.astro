@@ -617,6 +617,26 @@ import Layout from "../layouts/Layout.astro";
       height: 260px;
       max-width: 260px;
     }
+    .pile-hint {
+      bottom: -15px; /* Subirla más cerca de las fotos */
+    }
+    /* Forzar contador en una sola línea */
+    .countdown {
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      margin-top: 2rem;
+    }
+    .time-box {
+      min-width: 65px;
+      padding: 1rem 0.25rem;
+    }
+    .time-num {
+      font-size: 1.5rem;
+    }
+    .time-box .label {
+      font-size: 0.6rem;
+      letter-spacing: 0.05rem;
+    }
   }
 
   /* Event cards */
