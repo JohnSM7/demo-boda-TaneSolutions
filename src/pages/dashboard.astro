@@ -285,7 +285,7 @@ import Layout from '../layouts/Layout.astro';
   };
 
   (window as any).copyLink = function(uid: string) {
-    const link = window.location.origin + '/?uid=' + uid + '#rsvp';
+    const link = window.location.origin + '/?uid=' + uid;
     navigator.clipboard.writeText(link).then(() => {
       alert('¡Enlace de invitación único copiado! Ya puedes pegarlo en WhatsApp.');
     });
