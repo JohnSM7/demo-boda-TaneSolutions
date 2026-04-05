@@ -878,6 +878,11 @@ import Layout from "../layouts/Layout.astro";
 
 <script>
   // Trigger introductory animation
+  window.scrollTo(0, 0); // Forzar inicio en el Hero
+  if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+  }
+
   setTimeout(() => {
     document.querySelector(".hero-content")?.classList.add("visible");
   }, 100);
